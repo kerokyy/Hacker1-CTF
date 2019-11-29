@@ -1,0 +1,29 @@
+CTF Name : Micro-CMS v1
+
+Skill : Web
+Difficulty : Trivial
+
+Flag0:
+Hint : Try creating a new Page:
+
+Solution: -First of all when you are trying to solve a ctf is to try out everything that is available in the site/resource. In this case click all the buttons and make use of everything
+          -When you create a new page, you can actually see that the page id is assigned as 6 (in my case), so it skipped page 3,4 and 5. Try to navigate to these missing pages
+          -Page 3 actually gave Error 403 which is just a forbidden page instead of Error 404 like the other 2 pages.
+          -Try to get to page 3 by using the edit page function in the site and you will reach something like this http://34.74.105.127/b56d6d7347/page/edit/3
+          -the flag is at this page
+
+Flag1:
+Hint : Make sure you tamper with every input
+
+Solution :  - For this challenge, I actually stumbled upon it by accident by mistyping a quote mark while pressing enter in the http://34.74.105.127/b56d6d7347/page/edit/2 link.
+            - I believe this is an error that occur when the browser or input is expecting an int value with the Page ID (1 or 2 or 3 etc.) but we gave it a different data type
+            -The flag is there at the page
+            
+FLag2: 
+Hint : Hint: Sometimes a given input will affect more than one page
+
+Solution : -While editing the pages through the edit option, you cannot use <script> tags due to the filter but you can still use javascript to basically do XSS
+           -So go to the page with the button, edit it, and at the button I just put a random onClick alert in my case i made it become <button flag onClick=alert("test")>Some button</button>
+           -When you press the button and view the page source, then the flag is there.
+            
+          

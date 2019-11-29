@@ -1,0 +1,18 @@
+CTF Name: Postbook
+Difficulty : Easy
+Skill : Web
+
+Flag1: -After exploring the site and seeing what you can do with the buttons, I made an account there with username 'abc' and password '123'
+       -Then I sign in into the site and was greeted with 2 posts already made with the username admin and user. I clicked on the posts and are directed to the post's page
+       -Apparently the posts uses incremental page id and I found the 2 posts have the ID 1 and 3 but no 2. 
+       -Go to page id 2 as in http://34.74.105.127/...hex.../index.php?page=view.php&id=2 and you can see the flag there.
+       
+Flag2: -Hint : You should definitely use "Inspect Element" on the form when creating a new post
+        - When creating a new post , while viewing the elements of the page, you can see that the page determine who posts the post by tagging the user ID for example I was assigned ID 3,
+        -So press F12 on chrome, and change that element on the page before submitting the post. I changed it to become <input type="hidden" name="user_id" value="1">
+        -Now the post is posted as the account admin and I found the flag
+        
+        
+Flag3: - Hint : The person with username "user" has a very easy password...
+       - So with this hint we can assume that the password would be something very common such as abc or 123. 
+       -I feel like this is just a case of brute forcing your way in and it apparently the password is just 'password'.

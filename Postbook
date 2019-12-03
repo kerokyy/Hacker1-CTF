@@ -2,21 +2,36 @@ CTF Name: Postbook
 Difficulty : Easy
 Skill : Web
 
-Flag1: -After exploring the site and seeing what you can do with the buttons, I made an account there with username 'abc' and password '123'
+Flag0: -After exploring the site and seeing what you can do with the buttons, I made an account there with username 'abc' and password '123'
        -Then I sign in into the site and was greeted with 2 posts already made with the username admin and user. I clicked on the posts and are directed to the post's page
        -Apparently the posts uses incremental page id and I found the 2 posts have the ID 1 and 3 but no 2. 
        -Go to page id 2 as in http://34.74.105.127/...hex.../index.php?page=view.php&id=2 and you can see the flag there.
        
-Flag2: -Hint : You should definitely use "Inspect Element" on the form when creating a new post
+Flag1: -Hint : You should definitely use "Inspect Element" on the form when creating a new post
         - When creating a new post , while viewing the elements of the page, you can see that the page determine who posts the post by tagging the user ID for example I was assigned ID 3,
         -So press F12 on chrome, and change that element on the page before submitting the post. I changed it to become <input type="hidden" name="user_id" value="1">
         -Now the post is posted as the account admin and I found the flag
         
         
-Flag3: - Hint : The person with username "user" has a very easy password...
+Flag2: - Hint : The person with username "user" has a very easy password...
        - So with this hint we can assume that the password would be something very common such as abc or 123. 
        -I feel like this is just a case of brute forcing your way in and it apparently the password is just 'password'.
        
-Flag4:  -Hint : 189*5 
+Flag3:  -Hint : 189*5 
         -So, 189 * 5 = 945 . So I went to post id 945 http://34.74.105.127/..hex..hex/index.php?page=view.php&id=945 and I found the flag.
         -But to be honest, im not sure what this challenge actually teaches us as it is not that benificial.
+
+Flag4: -Hint : You can edit your own posts, what about someone else's?
+       -Editing a post is basically done by editing it with a ID in the link, changing the ID in the link will allow you to make changes to existing posts
+       -I changed the current ID to 1 , which is a post by the admin and edited the post and i got the flag when I submit the post.
+       
+Flag 5: -Hint : The cookie allows you to stay signed in. Can you figure out how they work so you can sign in to user with ID 1?
+       -For this challenge, you will need a Tool in your browser I used Cookie-Editor for Chrome and it should allow you to view the cookies you have
+       -After I open cookie editor, i will see that the site actually stores cookies by the cookie field called ID and the value is just an md5 hash for account id.
+       -Find what is the md5 for 1 (which is the admin account) and you will be able to login into the account. The flag is there 
+
+Flag 6 : Hint : Deleting a post seems to take an ID that is not a number. Can you figure out what it is?
+       -First I tried deleting a post and see whether it is being done by putting delete in the browser followed by the post ID but it is not.
+       -After inspecting the button with inspect element, we can see the post id is already being assigned with the button and the ID is just a md5 hash of the post ID
+       -Try changing the post ID into a md5 hash into another post created by another user (in my case I used post ID 3 ) and the flag will show when you delete it.
+       

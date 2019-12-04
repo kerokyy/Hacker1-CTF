@@ -1,0 +1,9 @@
+CTF Name: Petshop pro
+Level : Easy
+Skill : Web
+
+Flag0: Hint- Something looks out of place with checkout
+      -Upon inspection, on the checkout place, we can see how the cart actually tracks what items you are buying and what not.
+      -Using inspect element, we can see it is a field with input type hidden and lists all the items including the price.
+      -Change the input type to text and you are now able to edit the prices for items. Put them all as 0 and press check out.
+      -The check out page will now say your total is 0 and the flag will be there.
